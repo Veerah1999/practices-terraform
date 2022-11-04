@@ -17,3 +17,24 @@ resource "aws_instance" "instance_2" {
     on_failure = continue
   }
 }
+
+module "website_s3_bucket" {
+  source = "./modules/aws-s3-static-website-bucket"
+
+  bucket_name = "clickittech32123"
+
+  tags = {
+    Terraform   = "true"
+    Environment = "test"
+  }
+}
+module "website_s3_bucket_2" {
+  source = "./modules/aws-s3-static-website-bucket"
+
+  bucket_name = "clickittech321"
+
+  tags = {
+    Terraform   = "true"
+    Environment = "test"
+  }
+}
