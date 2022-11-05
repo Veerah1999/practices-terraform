@@ -18,23 +18,24 @@ resource "aws_instance" "instance_2" {
   }
 }
 
-module "website_s3_bucket" {
+module "website_s3_bucket_1" {
   source = "./modules/aws-s3-static-website-bucket"
 
-  bucket_name = "clickittech32123"
+  bucket_name = var.website_s3_bucket_1_name
 
   tags = {
-    Terraform   = "true"
-    Environment = "test"
+    Terraform   = var.terraform
+    Environment = var.environment
   }
 }
+
 module "website_s3_bucket_2" {
   source = "./modules/aws-s3-static-website-bucket"
 
-  bucket_name = "clickittech321"
+  bucket_name = var.website_s3_bucket_2_name
 
   tags = {
-    Terraform   = "true"
-    Environment = "test"
+    Terraform   = var.terraform
+    Environment = var.environment
   }
 }
